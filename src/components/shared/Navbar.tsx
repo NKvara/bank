@@ -58,7 +58,7 @@ const Navbar = ({ children }: NavbarProps) => {
   return (
     <RequireAuth>
       <div className="flex">
-        <div className="relative top-0 left-0 h-screen w-80 pt-16 bg-gray-100" />
+        <div className="h-screen w-80 bg-gray-100" />
         <div className="fixed top-0 h-screen w-80 pt-16 bg-gray-100">
           <span className="text-xl text-gray-700 ml-12">Help Bank</span>
           <div className="flex flex-col gap-5 mt-12">
@@ -71,21 +71,23 @@ const Navbar = ({ children }: NavbarProps) => {
             <NavText text="Sign Out" icon={<FiLogOut />} link="/sign-out" />
           </div>
         </div>
-        <div className="px-24 py-12 w-[calc(100vw-8rem)]">
-          <div className="flex justify-between items-center">
-            <span className="text-3xl font-bold">{curPage[0].name}</span>
-            <div className="flex items-center gap-4">
-              <FaBell size={22} />
-              <div className="avatar online">
-                <div className="w-10 rounded-full bg-blue-200" />
-              </div>
-              <div className="flex gap-2 items-center [&>svg]:mt-1">
-                <span className="capitalize">{auth.user}</span>
-                <FaAngleDown size={19} />
+        <div className="flex justify-center py-12 w-[calc(100vw-20rem)]">
+          <div className="w-[1072px]">
+            <div className="flex justify-between items-center mb-12">
+              <span className="text-3xl font-bold">{curPage[0].name}</span>
+              <div className="flex items-center gap-4">
+                <FaBell size={22} />
+                <div className="avatar online">
+                  <div className="w-10 rounded-full bg-blue-200" />
+                </div>
+                <div className="flex gap-2 items-center [&>svg]:mt-1">
+                  <span className="capitalize">{auth.user}</span>
+                  <FaAngleDown size={19} />
+                </div>
               </div>
             </div>
+            {children}
           </div>
-          {children}
         </div>
       </div>
     </RequireAuth>

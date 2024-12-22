@@ -1,11 +1,12 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, RouteObject, useRoutes } from 'react-router-dom';
 import { RequireAuth } from '~/components/auth/AuthProvider';
-// import NavBar from '~/components/shared/Nav/NavBar';
+import TransferScreen from '~/components/screens/Transfer';
+import Temp from '~/components/screens/Transfer/temp';
 import Loading from '~/components/shared/Loading';
 import Navbar from '~/components/shared/Navbar';
 
-const HomeScreen = lazy(() => import('~/components/screens/Home'));
+const HomeScreen = lazy(() => import('~/components/screens/Home/Index'));
 const ProtectedScreen = lazy(() => import('~/components/screens/Protected'));
 const LoginScreen = lazy(() => import('~/components/screens/Login'));
 const NotFoundScreen = lazy(() => import('~/components/screens/NotFound'));
@@ -24,10 +25,42 @@ function Routes() {
           ),
         },
         {
+          path: '/transfer',
+          element: (
+            <Navbar>
+              <TransferScreen />
+            </Navbar>
+          ),
+        },
+        {
+          path: '/transactions',
+          element: (
+            <Navbar>
+              <div>a</div>
+            </Navbar>
+          ),
+        },
+        {
+          path: '/accounts-cards',
+          element: (
+            <Navbar>
+              <div>a</div>
+            </Navbar>
+          ),
+        },
+        {
+          path: '/investments',
+          element: (
+            <Navbar>
+              <div>a</div>
+            </Navbar>
+          ),
+        },
+        {
           path: '/settings',
           element: (
             <Navbar>
-              <HomeScreen />
+              <div>a</div>
             </Navbar>
           ),
         },
@@ -38,6 +71,10 @@ function Routes() {
               <ProtectedScreen />
             </RequireAuth>
           ),
+        },
+        {
+            path: ':rikardo',
+            element: <Temp />,
         },
         {
           path: '/login',

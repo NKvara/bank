@@ -1,5 +1,4 @@
 import { HelmetProvider } from 'react-helmet-async';
-import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from '~/components/auth/AuthProvider';
 import Router from '~/components/router/Router';
 

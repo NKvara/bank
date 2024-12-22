@@ -9,8 +9,7 @@ export default function Login() {
   const location = useLocation();
   const auth = useAuth();
 
-  // const [user, setUser] = useState('sample_user');
-  const user = 'sample_user';
+  const [user, setUser] = useState('');
   const [step, setStep] = useState(1);
   const [otp, setOtp] = useState('');
 
@@ -21,8 +20,8 @@ export default function Login() {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    auth.signin(user, () => {
+    const currUser = user || 'sample_user';
+    auth.signin(currUser, () => {
       // Sends the user back to the page he tried to visit
       // when he was redirected to the login page.
       navigate(from, { replace: true });
@@ -45,7 +44,7 @@ export default function Login() {
           <div className="flex flex-col text-left gap-4">
             <span className="text-3xl font-bold w-[25rem]">Log in</span>
             <span>Account Number</span>
-            <input className="input input-bordered w-full" />
+            <input onChange={(o) => setUser(o.target.value)} className="input input-bordered w-full" />
             <span>Password</span>
             <input type="password" className="input input-bordered w-full" />
             <button type="button" onClick={() => setStep(2)} className="btn">
